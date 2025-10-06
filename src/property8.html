@@ -1,0 +1,974 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <!-- ScrollSmoother requires ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+</head>
+
+<body class="font-display antialiased">
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <!-- header -->
+            <div class="w-full h-auto max-w-[526px] md:max-w-[950px] lg:max-w-[1202px] mx-auto">
+                <header class="w-full md:pt-[40px] pt-8 pr-4 pl-4 md:pr-10 md:pl-10 lg:pr-16 pb-0 lg:pl-16">
+                    <nav class="flex items-center-safe justify-between text-white relative">
+                        <!-- Search Trigger -->
+                        <div id="searchTrigger">
+                            <div
+                                class="flex items-center justify-center gap-2 border border-[#404040] rounded-full 
+                                     bg-[#202020] h-[40px] w-[40px] md:h-[52px] md:w-[220px] md:px-[24px] md:pl-[16px] md:pr-[24px] cursor-pointer">
+                                <div class="h-[20px] w-[20px]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="rgb(234, 139, 97)" class="size-5 shrink-0">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                    </svg>
+                                </div>
+                                <div class="hidden md:block">
+                                    <p class="font-thin tracking-wide text-[rgb(255,255,255)]">Search for a listing</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:ml-[-60px]">
+                            <a class="p-0 flex items-center flex-nowrap h-min overflow-hidden relative w-min">
+                                <div
+                                    class="flex items-center-safe gap-2 text-xl font-bold uppercase tracking-[-0.04em]">
+                                    <div>
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em]">David</p>
+                                    </div>
+                                    <div class="bg-[rgb(234,_139,_97)] text-[rgb(34,_34,_34)] px-[1px]">
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em]">Adeleke</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div
+                                class="flex items-center gap-3 border border-[#404040] rounded-full bg-[#202020] h-[40px] w-[40px] md:h-[52px] md:w-[144px] justify-center">
+                                <div class="font-thin tracking-wide hidden md:block" id="clock"></div>
+                                <div id="subMenuView" class="cursor-pointer">
+                                    <span id="menu-icon">
+                                        <!-- Hamburger icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="2.5" stroke="rgb(234, 139, 97)"
+                                            class="size-5 md:size-6 hamburger">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                        </svg>
+
+                                        <!-- Close (X) icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="#db784e" class="size-6 close">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MENU DROP DOWN -->
+                        <div id="subMenu" class="flex flex-row absolute border 
+                            border-[rgb(46,46,46)] rounded-[24px] w-[280px] py-[40px] pr-[20px] pl-[32px] 
+                            top-12 md:top-15 right-0 overflow-hidden opacity-0 bg-[rgb(31,31,31)] z-20"
+                            style="display: none;">
+                            <nav class="relative flex items-start flex-col overflow-hidden gap-[24px] w-full">
+                                <div
+                                    class="flex flex-col gap-[8px] overflow-hidden w-full items-start justify-center-safe">
+                                    <p
+                                        class="text-[rgb(234,139,97)] text-[12px] font-[300] uppercase leading-[14px] tracking-[0.1em]">
+                                        Socials</p>
+                                    <nav>
+
+                                    </nav>
+                                    <u class="list-none no-underline flex flex-col gap-[16px]">
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                X (Twitter)
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                Instagram
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                Facebook
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                Linkedin
+                                            </a>
+                                        </li>
+                                    </u>
+                                </div>
+                                <div class="bg-[rgb(64,64,64)] w-full h-[1px]"></div>
+                                <div
+                                    class="flex flex-col gap-[8px] overflow-hidden w-full items-start justify-center-safe">
+                                    <p
+                                        class="text-[rgb(234,139,97)] text-[12px] font-[300] uppercase leading-[14px] tracking-[0.1em]">
+                                        CONTACT</p>
+                                    <nav>
+
+                                    </nav>
+                                    <u class="list-none no-underline flex flex-col gap-[16px]">
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                +234 3636-****
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                david.adeleke@example.com
+                                            </a>
+                                        </li>
+                                    </u>
+                                </div>
+                            </nav>
+                        </div>
+                    </nav>
+                </header>
+            </div>
+
+            <!-- body content -->
+            <section
+                class="animate-slide-up flex items-center justify-center-safe w-full relative pt-[48px] px-[16px] pb-[64px] md:pt-[100px] md:px-[40px] lg:px-[64px] md:pb-[80px]">
+                <div
+                    class="flex flex-col gap-[70px] md:gap-[120px] container max-w-[476px] md:max-w-[820px] lg:max-w-[1072px] overflow-hidden">
+                    <div class="flex flex-col gap-[40px]">
+                        <div class="rounded-[40px] h-[320px] md:h-[520px] relative w-full overflow-hidden">
+                            <div class="absolute inset-0 rounded-[40px]">
+                                <img src="images/property/image8/image8-1.jpg" alt=""
+                                    class="w-full h-full object-center object-cover">
+                            </div>
+                            <div class="absolute bottom-[20px] right-[20px] md:bottom-[40px] md:right-[40px] md:h-auto">
+                                <a id="scrollBtn"
+                                    class="bg-[rgb(31,31,31)] border-[rgb(64,64,64)] p-[24px] md:px-[24px] md:py-[14px] rounded-[40px] cursor-pointer flex items-center h-[40px] md:h-[52px]">
+                                    <p
+                                        class="text-[rgb(234,138,97)] relative text-sm md:text-base font-light tracking-wide">
+                                        View all
+                                        images</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <section class="flex flex-col gap-6 items-start w-full overflow-hidden">
+                            <div>
+                                <a href="index.html" class="flex items-center-safe gap-2 md:gap-4 cursor-pointer group">
+                                    <div class="border border-[rgb(64,64,64)] rounded-full bg-[rgb(31,31,31)] size-[36px] 
+                                     flex items-center justify-center overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="size-6 stroke-[rgb(234,138,97)]">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                        </svg>
+                                    </div>
+                                    <!-- $ -->
+                                    <div>
+                                        <p class="text-[rgb(255,255,255)] text-sm font-light transform transition-transform duration-400 
+                                       ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] 
+                                       group-hover:translate-x-2">
+                                            Back to listings
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- $ -->
+                            <div
+                                class="flex flex-col md:flex-row w-full items-start justify-between relative overflow-hidden gap-15">
+                                <!-- $ -->
+                                <div class="flex flex-col gap-[64px] w-full md:w-[530px] items-start">
+                                    <div class="flex flex-col w-full space-y-6 self-stretch">
+                                        <div class="space-y-2">
+                                            <div>
+                                                <h5
+                                                    class="text-[rgb(255,255,255)] text-xl md:text-[28px] font-normal leading-[34px]">
+                                                    Ologolo, Lekki, Lagos, Nigeria</h5>
+                                            </div>
+                                            <div class="flex items-center gap-1.5 text-sm md:text-base tracking-wide">
+                                                <p class="text-[rgb(144,144,144)] font-light">Listed by</p>
+                                                <p class="text-[rgb(255,255,255)] font-light">Cipher Blinks</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- div dark line -->
+                                        <div class="w-full">
+                                            <div class="bg-[rgb(64,64,64)] flex-1 h-[1px] overflow-hidden relative">
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="space-y-5 w-full relative">
+                                            <div class="tracking-[-0.01em] leading-[1.1em]">
+                                                <h6 class="text-xl font-medium text-[rgb(234,139,97)]">₦80,000,000</h6>
+                                            </div>
+                                            <div
+                                                class="flex flex-row flex-wrap w-full md:w-[399px] items-center justify-start gap-[32px] overflow-hidden relative">
+                                                <!-- $ -->
+                                                <div
+                                                    class="flex items-center flex-nowrap gap-[12px] w-[96px] md:w-[120px]">
+                                                    <div>
+                                                        <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg" stroke="#000000"
+                                                            stroke-width="0.00024000000000000003">
+                                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                stroke-linejoin="round"></g>
+                                                            <g id="SVGRepo_iconCarrier">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M2 6C2 5.44772 1.55228 5 1 5C0.447715 5 0 5.44772 0 6V18C0 18.5523 0.447715 19 1 19C1.55228 19 2 18.5523 2 18V16H22V18C22 18.5523 22.4477 19 23 19C23.5523 19 24 18.5523 24 18V10C24 7.79086 22.2091 6 20 6H13C11.8954 6 11 6.89543 11 8V14H2V6ZM22 10V14H13V8H20C21.1046 8 22 8.89543 22 10Z"
+                                                                    fill="rgb(106, 106, 106)"></path>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M6.5 13C8.433 13 10 11.433 10 9.5C10 7.567 8.433 6 6.5 6C4.567 6 3 7.567 3 9.5C3 11.433 4.567 13 6.5 13ZM6.5 11.0799C5.62742 11.0799 4.92006 10.3726 4.92006 9.5C4.92006 8.62742 5.62742 7.92006 6.5 7.92006C7.37258 7.92006 8.07994 8.62742 8.07994 9.5C8.07994 10.3726 7.37258 11.0799 6.5 11.0799Z"
+                                                                    fill="rgb(106, 106, 106)"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="flex gap-1 font-light">
+                                                        <div>
+                                                            <p class="text-[rgb(144,144,144)] text-sm">Bed:</p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-white text-sm">2</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- $ -->
+                                                <div class="flex items-center flex-nowrap gap-[12px]">
+                                                    <div>
+                                                        <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                stroke-linejoin="round"></g>
+                                                            <g id="SVGRepo_iconCarrier">
+                                                                <path
+                                                                    d="M4.04537 18.5083C2.68179 17.1448 2 16.463 2 15.6157C2 14.7685 2.68179 14.0867 4.04537 12.7231L12.7231 4.04537C14.0867 2.68179 14.7685 2 15.6157 2C16.463 2 17.1448 2.68179 18.5083 4.04537L19.9546 5.49167C21.3182 6.85525 22 7.53704 22 8.38426C22 9.23148 21.3182 9.91327 19.9546 11.2769L11.2769 19.9546C9.91327 21.3182 9.23148 22 8.38426 22C7.53704 22 6.85525 21.3182 5.49167 19.9546L4.04537 18.5083Z"
+                                                                    stroke="rgb(106,106,106)" stroke-width="1.5"></path>
+                                                                <path opacity="0.5" d="M8.46436 8.46448L9.87857 9.87869"
+                                                                    stroke="rgb(106,106,106)" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path opacity="0.5" d="M12.707 4.2218L14.1212 5.63602"
+                                                                    stroke="rgb(106,106,106)" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path opacity="0.5" d="M4.22192 12.7072L5.63614 14.1214"
+                                                                    stroke="rgb(106,106,106)" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path opacity="0.5" d="M6.34326 10.5858L8.46458 12.7071"
+                                                                    stroke="rgb(106,106,106)" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                                <path opacity="0.5" d="M10.5857 6.34314L12.707 8.46446"
+                                                                    stroke="rgb(106,106,106)" stroke-width="1.5"
+                                                                    stroke-linecap="round"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="flex gap-1 font-light">
+                                                        <div>
+                                                            <p class="text-[rgb(144,144,144)] text-sm">Area:</p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-white text-sm">500 sq.ft</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- $ -->
+                                                <div
+                                                    class="flex items-center flex-nowrap gap-[12px] w-[96px] md:w-[120px]">
+                                                    <div>
+                                                        <svg fill="rgb(106,106,106)" class="size-5 md:size-6"
+                                                            viewBox="0 0 24 24" id="bathtub-4" data-name="Line Color"
+                                                            xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+                                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                stroke-linejoin="round"></g>
+                                                            <g id="SVGRepo_iconCarrier">
+                                                                <path id="secondary"
+                                                                    d="M9,6H9A2,2,0,0,0,7,4H7A2,2,0,0,0,5,6v4"
+                                                                    style="fill: none; stroke: rgb(106,106,106); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                                                </path>
+                                                                <path id="secondary-2" data-name="secondary"
+                                                                    d="M17.5,18l.5,2M6.5,18,6,20"
+                                                                    style="fill: none; stroke: rgb(106,106,106); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                                                </path>
+                                                                <path id="primary"
+                                                                    d="M3,10H21m-1,4V10H4v4a4,4,0,0,0,4,4h8A4,4,0,0,0,20,14Z"
+                                                                    style="fill: none; stroke: rgb(106,106,106); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="flex gap-1 font-light">
+                                                        <div>
+                                                            <p class="text-[rgb(144,144,144)] text-sm">Bath:</p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-white text-sm">2</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- $ -->
+                                                <div class="flex items-center flex-nowrap gap-[12px]">
+                                                    <div>
+                                                        <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                stroke-linejoin="round"></g>
+                                                            <g id="SVGRepo_iconCarrier">
+                                                                <path
+                                                                    d="M14 21.0001V15.0001H10V21.0001M19 9.77818V16.2001C19 17.8802 19 18.7203 18.673 19.362C18.3854 19.9265 17.9265 20.3855 17.362 20.6731C16.7202 21.0001 15.8802 21.0001 14.2 21.0001H9.8C8.11984 21.0001 7.27976 21.0001 6.63803 20.6731C6.07354 20.3855 5.6146 19.9265 5.32698 19.362C5 18.7203 5 17.8802 5 16.2001V9.77753M21 12.0001L15.5668 5.96405C14.3311 4.59129 13.7133 3.9049 12.9856 3.65151C12.3466 3.42894 11.651 3.42899 11.0119 3.65165C10.2843 3.90516 9.66661 4.59163 8.43114 5.96458L3 12.0001"
+                                                                    stroke="rgb(106,106,106)" stroke-width="2"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="flex gap-1 font-light">
+                                                        <div>
+                                                            <p class="text-[rgb(144,144,144)] text-sm">Type:</p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-white text-sm text-wrap">3 Bedroom Duplex
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tab -->
+                                    <section class="w-full md:w-[516px] relative">
+                                        <div
+                                            class="flex flex-col gap-[24px] w-full relative overflow-hidden flex-nowrap">
+                                            <div
+                                                class="flex flex-col items-center justify-center flex-nowrap w-full overflow-visible gap-[24px]">
+                                                <!-- Tab Nav -->
+                                                <div class="flex items-center justify-between w-full">
+                                                    <!-- $ -->
+                                                    <div class="flex flex-col flex-1">
+                                                        <p class="text-base md:text-lg font-light text-center tracking-[.02em] text-white tab-btn active cursor-pointer"
+                                                            data-tab="tab1">Description</p>
+                                                    </div>
+                                                    <!-- $ -->
+                                                    <div class="flex flex-col flex-1">
+                                                        <p class="text-base md:text-lg font-light text-center tracking-[.02em] text-white tab-btn cursor-pointer"
+                                                            data-tab="tab2">
+                                                            Amenities</p>
+                                                    </div>
+                                                    <!-- $ -->
+                                                    <div class="flex flex-col flex-1 ">
+                                                        <p class="text-base md:text-lg font-light text-center tracking-[.02em] text-white tab-btn cursor-pointer"
+                                                            data-tab="tab3">
+                                                            Location</p>
+                                                    </div>
+                                                </div>
+                                                <!-- outline -->
+                                                <div class="relative w-full">
+                                                    <!-- Active indicator -->
+                                                    <div id="tab-indicator"
+                                                        class="absolute top-0 left-0 w-1/3 h-[4px] bg-[rgb(234,139,97)] rounded-[20px] transition-all duration-300 z-10">
+                                                    </div>
+                                                    <!-- Base line -->
+                                                    <div class="bg-[rgb(64,64,64)] h-[1px] w-full z-0"></div>
+                                                </div>
+                                            </div>
+                                            <!-- Tab Content -->
+
+                                            <!-- tab1 -->
+                                            <div id="tab1" class="tab-content">
+                                                <p
+                                                    class="text-sm md:text-base text-white font-light tracking-[.02em] leading-[1.5em]">
+                                                    Massive Room Sizes •Parking Spaces • Aesthetic POP Ceilings •
+                                                    Spacious Living Room • Clean Water Supply • Swimming Pool • Island
+                                                    Countertop • Walk-in Shower • Good Access Roads</p>
+                                            </div>
+
+                                            <!-- tab2 -->
+                                            <div id="tab2" class="tab-content hidden">
+                                                <div
+                                                    class="flex flex-row flex-wrap items-center text-white text-sm gap-[24px] font-light md:text-base justify-start overflow-hidden relative w-full">
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center gap-2">
+                                                            <div>
+                                                                <svg width="24px" height="24px" viewBox="0 0 45 45"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                                    stroke="#ffffff">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <path
+                                                                            d="M32 29.6256H36V32.6256C36 33.1776 35.552 33.6256 35 33.6256H33C32.448 33.6256 32 33.1776 32 32.6256V29.6256Z"
+                                                                            stroke="#ffffff" stroke-width="2"></path>
+                                                                        <path
+                                                                            d="M10 29.6256H14V32.6256C14 33.1776 13.552 33.6256 13 33.6256H11C10.448 33.6256 10 33.1776 10 32.6256V29.6256Z"
+                                                                            stroke="#ffffff" stroke-width="2"></path>
+                                                                        <path
+                                                                            d="M14 19.6256H32C34.209 19.6256 36 21.4166 36 23.6256V28.6256C36 29.1776 35.552 29.6256 35 29.6256H11C10.448 29.6256 10 29.1776 10 28.6256V23.6256C10 21.4166 11.791 19.6256 14 19.6256Z"
+                                                                            stroke="#ffffff" stroke-width="2"></path>
+                                                                        <path
+                                                                            d="M32 23.6256C32.552 23.6256 33 24.0736 33 24.6256C33 25.1776 32.552 25.6256 32 25.6256C31.448 25.6256 31 25.1776 31 24.6256C31 24.0736 31.448 23.6256 32 23.6256Z"
+                                                                            fill="#ffffff"></path>
+                                                                        <path
+                                                                            d="M14 23.6256C14.552 23.6256 15 24.0736 15 24.6256C15 25.1776 14.552 25.6256 14 25.6256C13.448 25.6256 13 25.1776 13 24.6256C13 24.0736 13.448 23.6256 14 23.6256Z"
+                                                                            fill="#ffffff"></path>
+                                                                        <path
+                                                                            d="M15.693 11.6256H30.307C30.724 11.6256 31.097 11.8846 31.243 12.2746L34 19.6256H12L14.757 12.2746C14.903 11.8846 15.276 11.6256 15.693 11.6256Z"
+                                                                            stroke="#ffffff" stroke-width="2"></path>
+                                                                        <path d="M9 16.6256H12V18.6256H9V16.6256Z"
+                                                                            fill="#ffffff"></path>
+                                                                        <path d="M34 16.6256H37V18.6256H34V16.6256Z"
+                                                                            fill="#ffffff"></path>
+                                                                        <path d="M17 24.6256H29" stroke="#ffffff"
+                                                                            stroke-width="2"></path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>Parking</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center-safe gap-2">
+                                                            <div class="">
+                                                                <svg width="18px" height="18x" viewBox="0 0 48.00 48.00"
+                                                                    xmlns="http://www.w3.org/2000/svg" fill="#ffffff"
+                                                                    stroke="#ffffff"
+                                                                    stroke-width="0.00048000000000000007">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round" stroke="#CCCCCC"
+                                                                        stroke-width="0.288"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <title>security-verified</title>
+                                                                        <g id="Layer_2" data-name="Layer 2">
+                                                                            <g id="invisible_box"
+                                                                                data-name="invisible box">
+                                                                                <rect width="48" height="48"
+                                                                                    fill="none">
+                                                                                </rect>
+                                                                            </g>
+                                                                            <g id="icons_Q2" data-name="icons Q2">
+                                                                                <path
+                                                                                    d="M24,6.2c5.3,1.5,11.1,3.3,14,4.3V26.2c0,3.4-3.7,9.4-14,15.4-10.3-6.1-14-12-14-15.4V10.5c2.9-1.1,8.7-2.8,14-4.3M24,2S6,7.1,6,8V26.2c0,9.2,13.3,17.3,17,19.5a1.8,1.8,0,0,0,2,0c3.8-2.1,17-10.3,17-19.5V8c0-.9-18-6-18-6Z">
+                                                                                </path>
+                                                                                <path
+                                                                                    d="M19.6,29.4l-5-4.9a2.1,2.1,0,0,1-.2-2.7,1.9,1.9,0,0,1,3-.2L21,25.2l9.6-9.6a2,2,0,0,1,2.8,2.8l-11,11A1.9,1.9,0,0,1,19.6,29.4Z">
+                                                                                </path>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>Security</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center-safe gap-2">
+                                                            <div>
+                                                                <svg width="18px" height="18px" viewBox="0 0 24 24"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                                    stroke="#ffffff">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <path
+                                                                            d="M3 13.1111C3 20.2222 8.28889 22 10.9333 22C12.2874 22 14.2481 21.6432 16 20.6097M18.7207 18C19.5021 16.7537 20 15.152 20 13.1111C20 8.58427 17.1653 5.35127 14.6023 3.49767C13.4438 2.65985 12 3.58 12 5.00971V5.33334C12 6.7752 11.3938 9.40705 9.70932 10.5017C8.84932 11.0606 7.92052 10.2241 7.816 9.20382L7.73017 8.36598C7.6304 7.39197 6.63841 6.80069 5.85996 7.39454C5.18794 7.90718 4.50139 8.60486 3.96944 9.5"
+                                                                            stroke="#ffffff" stroke-width="1.5"
+                                                                            stroke-linecap="round"></path>
+                                                                        <path
+                                                                            d="M8 18.4445C8 21.2889 10.4889 22 11.7333 22C12.8222 22 15 21.2889 15 18.4445C15 17.3435 14.4107 16.6002 13.8404 16.1713C13.4424 15.872 12.8828 16.1408 12.7459 16.6196C12.5675 17.2437 11.9228 17.636 11.5944 17.0759C11.2941 16.5638 11.2941 15.7957 11.2941 15.3334C11.2941 14.6968 10.6539 14.2847 10.1389 14.6589C9.10649 15.4091 8 16.6815 8 18.4445Z"
+                                                                            stroke="#ffffff" stroke-width="1.5"></path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>HVAC</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center-safe gap-2">
+                                                            <div>
+                                                                <svg fill="#ffffff" width="18px" height="18px"
+                                                                    viewBox="0 0 24 24"
+                                                                    xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <path
+                                                                            d="M23,18.667a4.332,4.332,0,0,1-7.667,2.766,4.328,4.328,0,0,1-6.666,0A4.332,4.332,0,0,1,1,18.667a1,1,0,0,1,2,0,2.334,2.334,0,0,0,4.667,0,1,1,0,0,1,2,0,2.333,2.333,0,1,0,4.666,0,1,1,0,1,1,2,0,2.334,2.334,0,0,0,4.667,0,1,1,0,0,1,2,0ZM16,15V13H8v2a1,1,0,0,1-2,0V6a5.006,5.006,0,0,1,5-5,1,1,0,0,1,0,2A3,3,0,0,0,8,6h8a5.006,5.006,0,0,1,5-5,1,1,0,0,1,0,2,3,3,0,0,0-3,3v9a1,1,0,0,1-2,0Zm0-4V8H8v3Z">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>Pool</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center-safe gap-2">
+                                                            <div>
+                                                                <svg width="18px" height="18px" viewBox="0 0 48 48"
+                                                                    xmlns="http://www.w3.org/2000/svg" fill="#000000"
+                                                                    stroke="#000000" stroke-width="2.496">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <defs>
+                                                                            <style>
+                                                                                .a {
+                                                                                    fill: none;
+                                                                                    stroke: #ffffff;
+                                                                                    stroke-linecap: round;
+                                                                                    stroke-linejoin: round;
+                                                                                }
+                                                                            </style>
+                                                                        </defs>
+                                                                        <path class="a"
+                                                                            d="M30.7652,28.6157A10.5155,10.5155,0,0,0,17.33,28.5793v.0364">
+                                                                        </path>
+                                                                        <path class="a"
+                                                                            d="M24.0211,32.9211a4.2163,4.2163,0,1,0,4.2162,4.2163h0a4.2163,4.2163,0,0,0-4.2162-4.2163Z">
+                                                                        </path>
+                                                                        <path class="a"
+                                                                            d="M37.1783,21.3261a20.6755,20.6755,0,0,0-26.3145,0">
+                                                                        </path>
+                                                                        <path class="a"
+                                                                            d="M43.5,13.6741a30.5677,30.5677,0,0,0-39,0">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>WI-FI</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center-safe gap-2">
+                                                            <div>
+                                                                <svg fill="#ffffff" width="16px" height="16px"
+                                                                    viewBox="0 0 32 32" version="1.1"
+                                                                    xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <title>recycle</title>
+                                                                        <path
+                                                                            d="M15.966 1.232c-0.97 0.021-1.901 0.261-2.807 0.655l1.404 2.62c0.463-0.165 0.937-0.277 1.404-0.281 1.599 0 3.292 0.853 4.585 3.088l5.333 9.264 1.778-2.901-4.491-7.86c-1.714-2.964-4.434-4.608-7.205-4.585 0 0 0 0 0 0zM7.171 8.811l-4.117 7.205c-1.569 2.715-1.68 5.792-0.374 8.234 0.541 1.012 1.362 1.842 2.339 2.526l1.497-2.526c-0.502-0.397-0.929-0.867-1.216-1.403-0.781-1.46-0.831-3.41 0.281-5.334l5.053-8.702h-3.462zM27.194 21.536c-0.098 0.48-0.239 0.896-0.468 1.311-0.801 1.448-2.372 2.526-4.866 2.526h-10.199l1.778 2.994h8.421c3.402 0 6.146-1.601 7.486-4.023 0.472-0.855 0.732-1.824 0.842-2.807l-2.994 0zM11.272 12.6l-6.728-3.879 6.728-3.879-0 7.759zM22.219 15.005l6.728 3.879 0-7.759-6.729 3.879zM8.193 26.81l6.728-3.879 0 7.759-6.729-3.879z">
+                                                                        </path>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>Recycle bin</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center-safe gap-2">
+                                                            <div>
+                                                                <svg fill="#ffffff" height="18px" width="18px"
+                                                                    version="1.1" id="Layer_1"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    viewBox="0 0 512 512" xml:space="preserve"
+                                                                    stroke="#ffffff" stroke-width="0.00512">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <g>
+                                                                            <g>
+                                                                                <path
+                                                                                    d="M378.435,72.342h-244.87c-27.619,0-50.087,22.468-50.087,50.087v33.391c0,9.223,7.479,16.696,16.696,16.696h311.652 c9.217,0,16.696-7.473,16.696-16.696v-33.391C428.522,94.81,406.054,72.342,378.435,72.342z">
+                                                                                </path>
+                                                                            </g>
+                                                                        </g>
+                                                                        <g>
+                                                                            <g>
+                                                                                <path
+                                                                                    d="M461.913,239.299h-78.792l-8.348-33.391h-34.415l25.043,100.174H146.599l25.043-100.174h-34.415l-8.348,33.391H50.087 C22.468,239.299,0,261.767,0,289.386v33.391c0,9.223,7.479,16.696,16.696,16.696h87.14l-19.858,79.429 c-5.387,21.522,27.022,29.636,32.392,8.097l21.881-87.528h235.498l21.881,87.528c5.375,21.562,37.77,13.391,32.392-8.097 l-19.858-79.429h87.14c9.217,0,16.696-7.473,16.696-16.696v-33.391C512,261.766,489.532,239.299,461.913,239.299z">
+                                                                                </path>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>Outdoor space</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- $ -->
+                                                    <div class="relative w-[144px] h-auto">
+                                                        <div class="flex items-center-safe gap-2">
+                                                            <div>
+                                                                <svg fill="#ffffff" height="16px" width="16px"
+                                                                    version="1.1" id="XMLID_90_"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    viewBox="0 0 24 24"
+                                                                    enable-background="new 0 0 24 24"
+                                                                    xml:space="preserve" stroke="#ffffff">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                        stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <g id="storage">
+                                                                            <g>
+                                                                                <path
+                                                                                    d="M22,24h-2v-2H4v2H2V0h20V24z M4,20h16V2H4v8h16v2H4V20z M15,17H9v-2h6V17z M15,7H9V5h6V7z">
+                                                                                </path>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </svg>
+                                                            </div>
+                                                            <div>
+                                                                <p>Storage</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- tab3 -->
+                                            <div id="tab3" class="tab-content hidden">
+                                                <div class="h-[240px] rounded-[10px] overflow-hidden">
+                                                    <iframe
+                                                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3966.5089534091167!2d6.721580076800563!3d6.196378993791348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sng!4v1759738167604!5m2!1sen!2sng"
+                                                        width="600" height="450" style="border:0;" allowfullscreen=""
+                                                        loading="lazy"
+                                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                </div>
+                                <!-- form -->
+                                <div class="flex flex-col gap-4 md:gap-7 relative w-full md:w-[330px]">
+                                    <!-- $ -->
+                                    <div
+                                        class="flex items-center overflow-hidden bg-[rgb(46,46,46)] w-full rounded-[24px] py-[32px] px-[24px] relative ">
+                                        <div class="flex items-start flex-col gap-6 w-full">
+                                            <div class="flex">
+                                                <p class="text-lg text-white text-nowrap">Interested? <span
+                                                        class="text-[rgb(234,139,97)]">Let's talk!</span></p>
+                                            </div>
+                                            <form action=""
+                                                class="flex items-start flex-col gap-5 justify-start w-full relative">
+                                                <!-- $ -->
+                                                <label for="" class="w-full flex flex-col gap-2">
+                                                    <!-- $ -->
+                                                    <div>
+                                                        <p class="text-[rgb(144,144,144)] text-xs font-medium">Name</p>
+                                                    </div>
+                                                    <!-- $ -->
+                                                    <div
+                                                        class="bg-[rgb(64,64,64)] w-full h-[40px] rounded-[10px] relative">
+                                                        <input type="text"
+                                                            class="focus:outline-1 focus:outline-[rgb(144,144,144)] text-white text-sm size-full p-[12px] rounded-[10px] placeholder-[rgb(144,144,144)]"
+                                                            placeholder="Cipher Blinks" required>
+                                                    </div>
+                                                </label>
+                                                <!-- $ -->
+                                                <label for="" class="w-full flex flex-col gap-2">
+                                                    <!-- $ -->
+                                                    <div>
+                                                        <p class="text-[rgb(144,144,144)] text-xs font-medium">Email</p>
+                                                    </div>
+                                                    <!-- $ -->
+                                                    <div
+                                                        class="bg-[rgb(64,64,64)] w-full h-[40px] rounded-[10px] relative">
+                                                        <input type="email"
+                                                            class="focus:outline-1 focus:outline-[rgb(144,144,144)] text-white text-sm size-full p-[12px] rounded-[10px] placeholder-[rgb(144,144,144)]"
+                                                            placeholder="@cipherblinks.com" required>
+                                                    </div>
+                                                </label>
+                                                <!-- $ -->
+                                                <label for="" class="w-full flex flex-col gap-2">
+                                                    <!-- $ -->
+                                                    <div>
+                                                        <p class="text-[rgb(144,144,144)] text-xs font-medium">Message
+                                                        </p>
+                                                    </div>
+                                                    <!-- $ -->
+                                                    <div
+                                                        class="bg-[rgb(64,64,64)] w-full h-auto min-h-full rounded-[10px] relative">
+                                                        <textarea
+                                                            class="flex min-h-24 w-full resize-y overflow-y-auto focus:outline-1 focus:outline-[rgb(144,144,144)] 
+                                                        text-white text-sm p-[12px] rounded-[10px] placeholder-[rgb(144,144,144)]"
+                                                            placeholder="Let us know your thoughts or questions."></textarea>
+                                                    </div>
+                                                </label>
+                                                <div class="w-full relative h-auto">
+                                                    <button type="submit"
+                                                        class="flex items-center justify-center w-full h-[52px] bg-[rgb(31,31,31)] border border-[rgb(64,64,64)]
+                                                    text-sm font-semibold text-[rgb(234,139,97)] tracking-[.05em] leading-[1.2em] rounded-[40px] uppercase cursor-pointer">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- $ -->
+                                    <div class="flex items-center-safe justify-center-safe gap-3 md:gap-5 w-full">
+                                        <!-- $ -->
+                                        <div>
+                                            <p class="text-white text-sm">Share this listing</p>
+                                        </div>
+                                        <!-- $ -->
+                                        <div class="rounded-full bg-[rgb(38,38,38)] p-1.5">
+                                            <svg fill="#ffffff" viewBox="0 0 255.99316 255.99316" id="Flat"
+                                                class="size-4 md:size-5" xmlns="http://www.w3.org/2000/svg"
+                                                stroke="#ffffff">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M231.99268,35.99414v140.001a12,12,0,0,1-24,0V47.99414H79.98584a12,12,0,0,1,0-24H219.99268A12.00028,12.00028,0,0,1,231.99268,35.99414Zm-40,40.001v140a12.00028,12.00028,0,0,1-12,12H39.98584a12.00028,12.00028,0,0,1-12-12v-140a12.00028,12.00028,0,0,1,12-12H179.99268A12.00028,12.00028,0,0,1,191.99268,75.99512Zm-24,12H51.98584v116H167.99268Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <!-- $ -->
+                                        <div class="rounded-full bg-[rgb(38,38,38)] p-1.5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="white" class="size-4 md:size-5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                        <!-- $ -->
+                                        <div class="rounded-full bg-[rgb(38,38,38)] p-1.5">
+                                            <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg"
+                                                preserveAspectRatio="xMidYMid" class="size-4 md:size-5"
+                                                viewBox="0 0 14.906 32" stroke="#ffffff">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                    stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path
+                                                        d="M14.874,11.167 L14.262,14.207 C14.062,15.208 13.100,15.992 12.072,15.992 L10.000,15.992 L10.000,30.000 C10.000,31.104 9.159,32.000 8.049,32.000 L5.030,32.000 C3.920,32.000 3.017,31.102 3.017,29.999 L3.017,15.992 L2.011,15.992 C0.901,15.992 -0.002,15.095 -0.002,13.991 L-0.002,10.990 C-0.002,9.887 0.901,8.989 2.011,8.989 L3.017,8.989 L3.017,6.003 C3.017,2.716 5.693,0.041 8.994,0.013 C9.015,0.012 9.033,0.001 9.055,0.001 L13.081,0.001 C13.636,0.001 14.000,0.448 14.000,1.000 L14.000,6.000 C14.000,6.553 13.636,7.004 13.081,7.004 L10.061,7.004 L10.060,8.989 L13.079,8.989 C13.645,8.989 14.167,9.228 14.509,9.644 C14.852,10.059 14.985,10.615 14.874,11.167 ZM9.092,10.990 C9.078,10.991 9.067,10.998 9.053,10.998 L9.053,10.998 C8.497,10.997 8.046,10.549 8.047,9.997 L8.047,9.990 C8.047,9.990 8.047,9.990 8.047,9.990 C8.047,9.990 8.047,9.990 8.047,9.990 L8.049,6.003 C8.049,5.450 8.499,5.003 9.055,5.003 L12.074,5.003 L12.074,2.002 L9.094,2.002 C9.077,2.002 9.063,2.011 9.045,2.011 C6.831,2.011 5.030,3.802 5.030,6.003 L5.030,10.005 C5.030,10.558 4.579,11.006 4.023,11.006 C3.996,11.006 3.973,10.992 3.946,10.990 L2.011,10.990 L2.011,13.991 L4.023,13.991 C4.579,13.991 5.030,14.439 5.030,14.992 C5.030,15.044 5.008,15.088 5.000,15.138 L5.000,30.000 L8.049,29.999 L8.049,15.002 C8.049,14.998 8.047,14.995 8.047,14.992 C8.047,14.439 8.497,13.991 9.053,13.991 L12.072,13.991 C12.145,13.991 12.275,13.886 12.288,13.816 L12.857,10.990 L9.092,10.990 Z">
+                                                    </path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                        </section>
+                    </div>
+
+
+                    <section class="flex flex-col gap-10">
+                        <div class="flex items-center-safe justify-center-safe gap-[10px] w-full">
+                            <div>
+                                <p
+                                    class="uppercase text-[rgb(234_139,_97)] text-lg font-light leading-[22px] tracking-[.1em] antialiased">
+                                    GALLERY
+                                </p>
+                            </div>
+                            <div class="bg-[rgb(64,64,64)] flex-1 h-[1px] overflow-hidden relative">
+
+                            </div>
+                        </div>
+                        <!-- images -->
+                        <div class="grid gap-10 grid-rows-[min-content] grid-cols-1 md:grid-cols-2 flex-none w-full relative content-start"
+                            id="viewAllImages">
+                            <!-- $ -->
+                            <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                <div class="absolute inset-0 rounded-[24px]">
+                                    <img src="images/property/image8/image8-1.jpg" alt=""
+                                        class="size-full object-center object-cover">
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div>
+                                <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                    <div class="absolute inset-0 rounded-[24px]">
+                                        <img src="images/property/image8/image8-2.jpg" alt=""
+                                            class="size-full object-center object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div>
+                                <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                    <div class="absolute inset-0 rounded-[24px]">
+                                        <img src="images/property/image8/image8-3.jpg" alt=""
+                                            class="size-full object-center object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div>
+                                <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                    <div class="absolute inset-0 rounded-[24px]">
+                                        <img src="images/property/image8/image8-4.jpg" alt=""
+                                            class="size-full object-center object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div>
+                                <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                    <div class="absolute inset-0 rounded-[24px]">
+                                        <img src="images/property/image8/image8-5.jpg" alt=""
+                                            class="size-full object-center object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div>
+                                <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                    <div class="absolute inset-0 rounded-[24px]">
+                                        <img src="images/property/image8/image8-6.jpg" alt=""
+                                            class="size-full object-center object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div>
+                                <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                    <div class="absolute inset-0 rounded-[24px]">
+                                        <img src="images/property/image8/image8-7.jpg" alt=""
+                                            class="size-full object-center object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div>
+                                <div class="h-[400px] w-full rounded-[24px] relative overflow-hidden">
+                                    <div class="absolute inset-0 rounded-[24px]">
+                                        <img src="images/property/image8/image8-8.jpg" alt=""
+                                            class="size-full object-center object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- footer -->
+            <section>
+                <footer
+                    class="flex items-center justify-center-safe w-full relative h-[240px] md:h-[140px] border-[rgb(46,46,46)] border-t-[1px] bg-[rgb(31,31,31)]">
+                    <div
+                        class="flex flex-col md:flex-row items-center gap-8 justify-start md:justify-between w-full max-w-[476px] md:max-w-[820px] lg:max-w-[1072px] overflow-hidden">
+                        <!-- $ -->
+                        <div class="md:w-[260px] order-2 md:order-1">
+                            <nav>
+                                <ul
+                                    class="flex it gap-[20px] text-[rgb(255,255,255)] text-sm uppercase font-light tracking-[0.03]">
+                                    <li>Home</li>
+                                    <li>Listing details</li>
+                                    <li>404</li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- $ -->
+                        <div class="md:ml-[-60px] order-1 md:order-2">
+                            <a class="p-0 flex items-center flex-nowrap h-min overflow-hidden relative w-min">
+                                <div
+                                    class="flex items-center-safe gap-2 text-xl font-bold uppercase tracking-[-0.04em]">
+                                    <div>
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em] text-[rgb(255,255,255)]">David
+                                        </p>
+                                    </div>
+                                    <div class="bg-[rgb(234,_139,_97)] text-[rgb(34,_34,_34)] px-[1px]">
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em]">Adeleke</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- $ -->
+                        <div class="order-3">
+                            <p class="text-[rgb(255,255,255)] text-sm font-light tracking-[0.03]"><span
+                                    class="text-[rgb(144,144,144)]">Made by</span> CIPHER BLINKS</p>
+                        </div>
+                    </div>
+                </footer>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- Search Modal-->
+    <div id="searchModal" class="fixed w-full h-screen inset-0 items-start justify-center z-10 hidden">
+        <div class="bg-[#000000cc] inset-0 absolute"></div>
+        <!-- Search input -->
+        <div class="modal-content relative w-full md:w-[500px] flex flex-col z-10">
+            <div class="md:h-[21vh]"></div>
+
+            <div class="bg-[rgb(34,34,34)] w-full md:rounded-full">
+                <div class="flex items-center gap-3 px-[20px] py-[16px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="#db784e" class="size-5 shrink-0">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                    <input type="text" placeholder="Search for a listing"
+                        class="bg-transparent w-full text-[rgb(234,139,97)] focus:outline-none placeholder-white font-light">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- External Javascript -->
+    <script src="./js/index.js"></script>
+
+    <script>
+        $("#scrollBtn").click(function () {
+            $("html, body").animate({
+                scrollTop: $("#viewAllImages").offset().top
+            }, 800);
+        });
+    </script>
+</body>
+
+</html>

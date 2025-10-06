@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet');
+@import "tailwindcss";
+
+@theme {
+    --font-display: "Geist", "Geist Placeholder", sans-serif;
+    --breakpoint-sml: 28rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#smooth-content {
+  will-change: transform;
+}
+
+* {
+    box-sizing: border-box;
+  }  
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+    box-sizing: border-box;
+  }
+  
+  @layer utilities {
+    .img-box-shadow {
+        box-shadow: 0 .6021873017743928px 1.3248120639036642px -.08333333333333333px #00000008, 0 2.288533303243457px 5.034773267135606px -.16666666666666666px #00000010, 0 10px 22px -.25px #0000003d;
+    }
+  }
+
+/* By default show hamburger, hide close */
+#menu-icon .close { display: none; }
+#menu-icon.open .hamburger { display: none; }
+#menu-icon.open .close { display: inline; }
+
+
+@layer components {
+  .custom-p {
+    @apply text-[rgb(255,255,255)] text-sm md:text-base font-light leading-[24px] tracking-[.02em];
+  }
+  .custom-p-test {
+    @apply text-sm md:text-base font-light text-[rgb(144,144,144)] tracking-[.02em];
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out both;
+}

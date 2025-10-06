@@ -1,0 +1,857 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <!-- ScrollSmoother requires ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+</head>
+
+<body class="font-display antialiased">
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <!-- header -->
+            <div class="w-full h-auto max-w-[526px] md:max-w-[950px] lg:max-w-[1202px] mx-auto">
+                <header class="w-full md:pt-[40px] pt-8 pr-4 pl-4 md:pr-10 md:pl-10 lg:pr-16 pb-0 lg:pl-16">
+                    <nav class="flex items-center-safe justify-between text-white relative">
+                        <!-- Search Trigger -->
+                        <div id="searchTrigger">
+                            <div
+                                class="flex items-center justify-center gap-2 border border-[#404040] rounded-full 
+                                     bg-[#202020] h-[40px] w-[40px] md:h-[52px] md:w-[220px] md:px-[24px] md:pl-[16px] md:pr-[24px] cursor-pointer">
+                                <div class="h-[20px] w-[20px]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="#db784e" class="size-5 shrink-0">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                    </svg>
+                                </div>
+                                <div class="hidden md:block">
+                                    <p class="font-thin tracking-wide text-[rgb(255,255,255)]">Search for a listing</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:ml-[-60px]">
+                            <a class="p-0 flex items-center flex-nowrap h-min overflow-hidden relative w-min">
+                                <div
+                                    class="flex items-center-safe gap-2 text-xl font-bold uppercase tracking-[-0.04em]">
+                                    <div>
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em]">David</p>
+                                    </div>
+                                    <div class="bg-[rgb(234,_139,_97)] text-[rgb(34,_34,_34)] px-[1px]">
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em]">Adeleke</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <div
+                                class="flex items-center gap-3 border border-[#404040] rounded-full bg-[#202020] h-[40px] w-[40px] md:h-[52px] md:w-[144px] justify-center">
+                                <div class="font-thin tracking-wide hidden md:block" id="clock"></div>
+                                <div id="subMenuView" class="cursor-pointer">
+                                    <span id="menu-icon">
+                                        <!-- Hamburger icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="#db784e" class="size-6 hamburger">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                        </svg>
+
+                                        <!-- Close (X) icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="#db784e" class="size-6 close">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 18 18 6M6 6l12 12" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MENU DROP DOWN -->
+                        <div id="subMenu" class="flex flex-row absolute border 
+                            border-[rgb(46,46,46)] rounded-[24px] w-[280px] py-[40px] pr-[20px] pl-[32px] 
+                            top-12 md:top-15 right-0 overflow-hidden opacity-0 bg-[rgb(31,31,31)] z-20"
+                            style="display: none;">
+                            <nav class="relative flex items-start flex-col overflow-hidden gap-[24px] w-full">
+                                <div
+                                    class="flex flex-col gap-[8px] overflow-hidden w-full items-start justify-center-safe">
+                                    <p
+                                        class="text-[rgb(234,139,97)] text-[12px] font-[300] uppercase leading-[14px] tracking-[0.1em]">
+                                        Socials</p>
+                                    <nav>
+
+                                    </nav>
+                                    <u class="list-none no-underline flex flex-col gap-[16px]">
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                X (Twitter)
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                Instagram
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                Facebook
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                Linkedin
+                                            </a>
+                                        </li>
+                                    </u>
+                                </div>
+                                <div class="bg-[rgb(64,64,64)] w-full h-[1px]"></div>
+                                <div
+                                    class="flex flex-col gap-[8px] overflow-hidden w-full items-start justify-center-safe">
+                                    <p
+                                        class="text-[rgb(234,139,97)] text-[12px] font-[300] uppercase leading-[14px] tracking-[0.1em]">
+                                        CONTACT</p>
+                                    <nav>
+
+                                    </nav>
+                                    <u class="list-none no-underline flex flex-col gap-[16px]">
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                +234 3636-****
+                                            </a>
+                                        </li>
+                                        <li class="font-[300]">
+                                            <a href="">
+                                                david.adeleke@example.com
+                                            </a>
+                                        </li>
+                                    </u>
+                                </div>
+                            </nav>
+                        </div>
+                    </nav>
+                </header>
+            </div>
+
+            <!-- body content -->
+            <section
+                class="animate-slide-up flex items-center justify-center-safe w-full relative pt-[72px] px-[16px] pb-[80px] md:pt-[100px] md:px-[40px] lg:px-[64px] md:pb-[80px]">
+                <div
+                    class="flex flex-col gap-[80px] md:gap-[120px] container max-w-[476px] md:max-w-[820px] lg:max-w-[1072px] text-4xl md:text-5xl lg:text-6xl font-light leading-[70px] shrink-0 overflow-hidden">
+                    <header class="flex flex-col gap-[12px] md:gap-[32px] w-full relative">
+                        <div class="flex flex-col flex-nowrap gap-[10px] w-full">
+                            <div
+                                class="flex items-end-safe lg:justify-center text-nowrap gap-[16px] tracking-[-0.03em] leading-[1.3em]">
+                                <div>
+                                    <h1 class=" text-white"><span class="text-[rgb(144,_144,_144)]">Hi,</span> I’m David
+                                    </h1>
+                                </div>
+                                <div
+                                    class="img-box-shadow rounded-[15px] md:rounded-[30px] h-[63px] w-[70px] md:h-[95px] md:w-[105px] relative overflow-hidden shrink-0">
+                                    <div class="absolute border-inherit inset-0">
+                                        <img src="images/home/davido.jpg" loading="lazy" alt=""
+                                            class="h-full w-full object-cover object-center">
+                                    </div>
+                                </div>
+                                <div class="hidden lg:block">
+                                    <h1 class="text-[rgb(144,_144,_144)]">a real estate agent with</h1>
+                                </div>
+                                <!-- medieum screen -->
+                                <div class="hidden md:block lg:hidden">
+                                    <h1 class="text-[rgb(144,_144,_144)]">a real estate</h1>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="md:tracking-[-0.03em] leading-[1.3em] lg:pl-5">
+                                    <!-- large screen -->
+                                    <div class="hidden lg:block">
+                                        <h1 class="text-white">14 years of experience<span
+                                                class="text-[rgb(144,_144,_144)]">working with</span> top agencies</h1>
+                                    </div>
+                                    <!-- medieum screen -->
+                                    <div class="hidden md:block lg:hidden">
+                                        <h1 class="text-white"> <span class="text-[rgb(144,_144,_144)]">agent with
+                                            </span>14
+                                            years of experience<span class="text-[rgb(144,_144,_144)]"> working
+                                                with</span> top
+                                            agencies</h1>
+                                    </div>
+                                    <!-- small screen -->
+                                    <div class="md:hidden tracking-[-0.01em] relative text-balance">
+                                        <h1 class="text-[rgb(144,_144,_144)] ">a real estate agent with <span
+                                                class="text-[rgb(255,255,255)]">14 years of experience </span> working
+                                            with
+                                            <span class="text-[rgb(255,255,255)]">top agencies</span>
+                                        </h1>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="absolute bottom-[82px] left-[285px] md:bottom-[68px] md:left-[540px] lg:bottom-[70px] lg:left-[260px] size-[32px] md:size-[44px] lg:size-[54px] overflow-hidden">
+                                    <img src="images/home/star.svg" class="w-full h-full object-cover object-center"
+                                        alt="star">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap overflow-hidden lg:pl-5 md:gap-10 gap-4">
+                            <div class="flex items-center-safe gap-1.5">
+                                <div class="size-[25px]">
+                                    <img src="images/home/top.svg" alt="">
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-base md:text-lg font-light tracking-[0.02em] text-[rgb(144,_144,_144)]">
+                                        Top
+                                        Producer Award
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center-safe gap-1.5">
+                                <div class="size-[25px]">
+                                    <img src="images/home/top.svg" alt="">
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-base md:text-lg font-light tracking-[0.02em] text-[rgb(144,_144,_144)]">
+                                        Client
+                                        Choice
+                                        Award</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center-safe gap-1.5">
+                                <div class="size-[25px]">
+                                    <img src="images/home/top.svg" alt="">
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-base md:text-lg font-light tracking-[0.02em] text-[rgb(144,_144,_144)]">
+                                        Community
+                                        Impact
+                                        Award</p>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- second section -->
+                    <section class="flex flex-col gap-8 relative">
+                        <div class="flex items-center-safe justify-center-safe gap-[10px] w-full">
+                            <div>
+                                <p
+                                    class="uppercase text-[rgb(234_139,_97)] text-lg font-light leading-[22px] tracking-[.1em] antialiased">
+                                    listings</p>
+                            </div>
+                            <div class="bg-[rgb(64,64,64)] flex-1 h-[1px] overflow-hidden relative">
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div
+                                class="grid auto-rows-[minmax(0,1fr)] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8 relative">
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group">
+                                    <a href="property1.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image1/image1-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦200,000,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Ajah, Lekki , Lagos, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">2</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">4</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">2000 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group">
+                                    <a href="property2.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image2/image2-1.png" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦420,000,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Chevron T.G, Lekki, Lagos, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">2</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">4</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">4800 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group">
+                                    <a href="property3.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image3/image3-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦350,000,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Lekki Phase 1, Lagos, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">5</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">4</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">2000 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group">
+                                    <a href="property4.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image4/image4-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦280,080,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Okpanam Road, Asaba, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">3</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">5</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">1800 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group">
+                                    <a href="property5.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image5/image5-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦80,100,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Government Road, Awka, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">2</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">3</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">2100 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group">
+                                    <a href="property6.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image6/image6-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦180,100,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Ajah Lekki Lagos, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">6</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">3</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">1100 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <!-- hidden property content -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group hidden hiddenImage">
+                                    <a href="property7.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image7/image7-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦780,000,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Ibusa Road Asaba, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">8</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">7</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">4500 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group hidden hiddenImage">
+                                    <a href="property8.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image8/image8-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦80,000,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Ologolo, Lekki, Lagos, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">2</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">2</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">500 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- $ -->
+                                <div
+                                    class="w-full h-full relative justify-self-center rounded-[24px] overflow-hidden group hidden hiddenImage">
+                                    <a href="property9.html"
+                                        class="flex flex-col gap-[12px] w-full h-full relative overflow-visible cursor-pointer rounded-[24px]">
+                                        <div class="rounded-[24px] relative overflow-hidden h-[350px] w-full">
+                                            <!-- image -->
+                                            <div class="absolute inset-0 overflow-hidden">
+                                                <img src="images/property/image9/image9-1.jpg" alt="" loading="lazy"
+                                                    class="w-full h-full object-cover object-center md:transition-transform md:duration-500 md:ease-in-out md:group-hover:scale-110">
+                                            </div>
+                                            <div class="absolute inset-0 z-10 overflow-hidden rounded-[24px]">
+                                                <div
+                                                    class="bg-[linear-gradient(rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_100%)] blur-[8px] h-[55%] top-[-24px] right-[-48px] left-[-48px] absolute overflow-hidden">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="absolute flex items-center justify-start flex-col inset-0 p-[40px] z-20 md:transition-transform md:duration-500 md:ease-in-out md:group-hover:translate-x-2">
+                                                <div class="relative w-full">
+                                                    <h6
+                                                        class="text-[rgb(255,255,255)] text-xl font-medium tracking-[-0.01em] leading-[1.1em]">
+                                                        ₦170,000,000</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-start pl-4 gap-3 text-sm md:text-base font-light leading-[19px]">
+                                            <p class="text-[rgb(234,139,97)]">Agungi, Lekki, Lagos, Nigeria</p>
+                                            <div class="flex gap-2 text-[rgb(144,144,144)]">
+                                                <p>Bath: <span class="text-[rgb(255,255,255)]">2</span></p>
+                                                <p>Bed: <span class="text-[rgb(255,255,255)]">4</span></p>
+                                                <p>Area: <span class="text-[rgb(255,255,255)]">900 sq.ft</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center-safe justify-center gap-2 bg-[rgb(38,38,38)] rounded-[80px] text-[rgb(234,139,97)] h-[88px] mt-4 cursor-pointer"
+                            id="loadMore">
+                            <div class="s-[24px]">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm tracking-[0.05em]">LOAD MORE</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- TESTIMONIALS -->
+                    <section class="flex flex-col items-center flex-nowrap gap-8 w-full relative justify-start">
+                        <div class="flex items-center-safe justify-center-safe gap-[10px] w-full">
+                            <div>
+                                <p
+                                    class="uppercase text-[rgb(234_139,_97)] text-lg font-light leading-[22px] tracking-[.1em] antialiased">
+                                    TESTIMONIALS
+                                </p>
+                            </div>
+                            <div class="bg-[rgb(64,64,64)] flex-1 h-[1px] overflow-hidden relative">
+
+                            </div>
+                        </div>
+
+                        <div
+                            class="grid grid-cols-[repeat(1,minmax(50px,1fr))] md:grid-cols-[repeat(2,minmax(50px,1fr))] lg:grid-cols-[repeat(3,minmax(50px,1fr))] grid-rows-[repeat(2,minmax(0,1fr))] justify-center w-full auto-rows-[minmax(0,1fr)] gap-8 relative">
+                            <!-- $ -->
+                            <div class="flex flex-col w-full h-min overflow-hidden relative items-center justify-start">
+                                <div
+                                    class="flex flex-col gap-5 border-[rgb(46,46,46)] border-t-[1px] border-x-[1px] px-[20px] py-[12px] rounded-[20px]">
+                                    <div>
+                                        <p class="custom-p">
+                                            Cipher Blinks made my first home purchase stress-free. The team was
+                                            professional,
+                                            patient, and always ready to answer my questions. I couldn’t be happier with
+                                            my new place.
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-[24px] overflow-hidden w-full">
+                                        <div class="h-[24px] w-[24px] rounded-full overflow-hidden flex-shrink-0">
+                                            <div>
+                                                <img src="images/testimonials/test1.avif" alt="Daniel Martinez"
+                                                    class="block w-full h-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 shrink-0 basis-0">
+                                            <p class="custom-p-test">
+                                                Amaka Johnson</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div class="flex flex-col w-full h-min overflow-hidden relative items-center justify-start">
+                                <div
+                                    class="flex flex-col gap-5 border-[rgb(46,46,46)] border-t-[1px] border-x-[1px] px-[20px] py-[12px] rounded-[20px]">
+                                    <div>
+                                        <p class="custom-p">
+                                            Selling my property through Cipher Blinks was smooth from start to finish.
+                                            They got me the best deal within weeks. Highly recommend them to anyone
+                                            looking to buy or sell real estate.
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-[24px] overflow-hidden w-full">
+                                        <div class="h-[24px] w-[24px] rounded-full overflow-hidden flex-shrink-0">
+                                            <div>
+                                                <img src="images/testimonials/test2.avif" alt="Daniel Martinez"
+                                                    class="block w-full h-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 shrink-0 basis-0">
+                                            <p class="custom-p-test">
+                                                Kunle Adeyemi</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div class="flex flex-col w-full h-min overflow-hidden relative items-center justify-start">
+                                <div
+                                    class="flex flex-col gap-5 border-[rgb(46,46,46)] border-t-[1px] border-x-[1px] px-[20px] py-[12px] rounded-[20px]">
+                                    <div>
+                                        <p class="custom-p">
+                                            What I love most about Cipher Blinks is their honesty and transparency.
+                                            No hidden costs, no pressure — just straightforward and professional
+                                            service.
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-[24px] overflow-hidden w-full">
+                                        <div class="h-[24px] w-[24px] rounded-full overflow-hidden flex-shrink-0">
+                                            <div>
+                                                <img src="images/testimonials/test3.avif" alt="Daniel Martinez"
+                                                    class="block w-full h-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 shrink-0 basis-0">
+                                            <p class="custom-p-test">
+                                                Sophia Daniels</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div class="flex flex-col w-full h-min overflow-hidden relative items-center justify-start">
+                                <div
+                                    class="flex flex-col gap-5 border-[rgb(46,46,46)] border-t-[1px] border-x-[1px] px-[20px] py-[12px] rounded-[20px]">
+                                    <div>
+                                        <p class="custom-p">
+                                            I relocated from Abuja to Lagos and was nervous about finding the right
+                                            home.
+                                            Cipher Blinks found me exactly what I wanted, within budget, and in a great
+                                            location.
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-[24px] overflow-hidden w-full">
+                                        <div class="h-[24px] w-[24px] rounded-full overflow-hidden flex-shrink-0">
+                                            <div>
+                                                <img src="images/testimonials/test4.avif" alt="Daniel Martinez"
+                                                    class="block w-full h-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 shrink-0 basis-0">
+                                            <p class="custom-p-test">
+                                                Ibrahim Musa</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div class="flex flex-col w-full h-min overflow-hidden relative items-center justify-start">
+                                <div
+                                    class="flex flex-col gap-5 border-[rgb(46,46,46)] border-t-[1px] border-x-[1px] px-[20px] py-[12px] rounded-[20px]">
+                                    <div>
+                                        <p class="custom-p">
+                                            The customer service at Cipher Blinks is top-notch.
+                                            They truly care about clients and make the whole process so easy and
+                                            stress-free.
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-[24px] overflow-hidden w-full">
+                                        <div class="h-[24px] w-[24px] rounded-full overflow-hidden flex-shrink-0">
+                                            <div>
+                                                <img src="images/testimonials/test5.avif" alt="Daniel Martinez"
+                                                    class="block w-full h-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 shrink-0 basis-0">
+                                            <p class="custom-p-test">
+                                                Linda Okafor</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- $ -->
+                            <div class="flex flex-col w-full h-min overflow-hidden relative items-center justify-start">
+                                <div
+                                    class="flex flex-col gap-5 border-[rgb(46,46,46)] border-t-[1px] border-x-[1px] px-[20px] py-[12px] rounded-[20px]">
+                                    <div>
+                                        <p class="custom-p">
+                                            I’ve worked with other agencies before, but Cipher Blinks
+                                            stands out for their professionalism and deep market knowledge. Excellent
+                                            service!
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-[24px] overflow-hidden w-full">
+                                        <div class="h-[24px] w-[24px] rounded-full overflow-hidden flex-shrink-0">
+                                            <div>
+                                                <img src="images/testimonials/test6.avif" alt="Daniel Martinez"
+                                                    class="block w-full h-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 shrink-0 basis-0">
+                                            <p class="custom-p-test">
+                                                Grace Nwachukwu</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </section>
+
+            <!-- footer -->
+            <section>
+                <footer
+                    class="flex items-center justify-center-safe w-full relative h-[240px] md:h-[140px] border-[rgb(46,46,46)] border-t-[1px] bg-[rgb(31,31,31)]">
+                    <div
+                        class="flex flex-col md:flex-row items-center gap-8 justify-start md:justify-between w-full max-w-[476px] md:max-w-[820px] lg:max-w-[1072px] overflow-hidden">
+                        <!-- $ -->
+                        <div class="md:w-[260px] order-2 md:order-1">
+                            <nav>
+                                <ul
+                                    class="flex it gap-[20px] text-[rgb(255,255,255)] text-sm uppercase font-light tracking-[0.03]">
+                                    <li>Home</li>
+                                    <li>Listing details</li>
+                                    <li>404</li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- $ -->
+                        <div class="md:ml-[-60px] order-1 md:order-2">
+                            <a class="p-0 flex items-center flex-nowrap h-min overflow-hidden relative w-min">
+                                <div
+                                    class="flex items-center-safe gap-2 text-xl font-bold uppercase tracking-[-0.04em]">
+                                    <div>
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em] text-[rgb(255,255,255)]">David
+                                        </p>
+                                    </div>
+                                    <div class="bg-[rgb(234,_139,_97)] text-[rgb(34,_34,_34)] px-[1px]">
+                                        <p class="m-0 leading-[1.1em] tracking-[-0.04em]">Adeleke</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- $ -->
+                        <div class="order-3">
+                            <p class="text-[rgb(255,255,255)] text-sm font-light tracking-[0.03]"><span
+                                    class="text-[rgb(144,144,144)]">Made by</span> CIPHER BLINKS</p>
+                        </div>
+                    </div>
+                </footer>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- Search Modal-->
+    <div id="searchModal" class="fixed w-full h-screen inset-0 items-start justify-center z-10 hidden">
+        <div class="bg-[#000000cc] inset-0 absolute"></div>
+        <!-- Search input -->
+        <div class="modal-content relative w-full md:w-[500px] flex flex-col z-10">
+            <div class="md:h-[21vh]"></div>
+
+            <div class="bg-[rgb(34,34,34)] w-full md:rounded-full">
+                <div class="flex items-center gap-3 px-[20px] py-[16px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="#db784e" class="size-5 shrink-0">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                    <input type="text" placeholder="Search for a listing"
+                        class="bg-transparent w-full text-[rgb(234,139,97)] focus:outline-none placeholder-white font-light">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- External Javascript -->
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
