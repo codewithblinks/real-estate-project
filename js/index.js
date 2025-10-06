@@ -35,17 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Smooth scroll setup
-  ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 1,
-    normalizeScroll: true,
-    ignoreMobileResize: true,
-    effects: false
-  });
-
-  setTimeout(() => ScrollTrigger.refresh(), 500);
 
   //Search modal toggle
   $("#searchTrigger").click(() => {
