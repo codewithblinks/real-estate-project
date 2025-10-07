@@ -3,11 +3,9 @@
 
 @theme {
     --font-display: "Geist", "Geist Placeholder", sans-serif;
-    --breakpoint-sml: 28rem;
-}
-
-html {
-  scroll-behavior: smooth;
+    --breakpoint-sm: 30rem;
+    --breakpoint-md: 51rem;
+    --breakpoint-lg: 75rem;
 }
 
 #smooth-content {

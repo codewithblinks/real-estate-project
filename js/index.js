@@ -1,33 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
   let submenu = $("#subMenu");
-  let isOpen = false; // track state
+  let isOpen = false;
 
+  // Submenu toggle
   $("#subMenuView").click(function () {
     if (isOpen) {
-      // Animate closing
       gsap.to(submenu, { 
-        height: 0, 
-        opacity: 0, 
-        duration: 0.3, 
+        height: 0, opacity: 0, duration: 0.3, 
         onComplete: () => submenu.css("display", "none") 
       });
       $("#menu-icon").removeClass("open");
       isOpen = false;
     } else {
-      // Prepare submenu
       submenu.css({ display: "block", height: "auto", opacity: 1 });
       let fullHeight = submenu[0].scrollHeight;
-
-      // Reset to collapsed before animating open
       submenu.css({ height: 0, opacity: 0 });
 
       gsap.to(submenu, { 
-        height: fullHeight, 
-        opacity: 1, 
-        duration: 0.3, 
-        clearProps: "height" // let it auto-adjust after animation
+        height: fullHeight, opacity: 1, duration: 0.3, 
+        clearProps: "height"
       });
 
       $("#menu-icon").addClass("open");
@@ -35,46 +26,56 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-
-  //Search modal toggle
+  // Search modal toggle
   $("#searchTrigger").click(() => {
-    $("#searchModal").removeClass("hidden").addClass('flex');
+    $("#searchModal").removeClass("hidden").addClass("flex");
   });
 
   $(document).on("click", function (e) {
     if (!$(e.target).closest(".modal-content, #searchTrigger").length) {
-      $("#searchModal").addClass("hidden");
+      $("#searchModal").addClass("hidden").removeClass("flex");
     }
   });
-  
-  // tab
-    $(".tab-btn").on("click", function () {
-      let index = $(this).parent().index(); // which tab was clicked?
-      let widthPercent = 100 / $(".tab-btn").length; // equally divide
-  
-      // Move indicator
-      $("#tab-indicator").css("left", index * widthPercent + "%");
-  
-      // Update active tab styling
-      $(".tab-btn").removeClass("active text-[rgb(234,139,97)]");
-      $(this).addClass("active text-[rgb(234,139,97)]");
-  
-      // Toggle content
-      $(".tab-content").addClass("hidden");
-      $("#" + $(this).data("tab")).removeClass("hidden");
-    });
 
-    $('#loadMore').on('click', function () {
-      $('.hiddenImage').removeClass('hidden');
-      $('#loadMore').addClass('hidden');
-    })
+  // Tabs
+  $(".tab-btn").on("click", function () {
+    let index = $(this).parent().index();
+    let widthPercent = 100 / $(".tab-btn").length;
+    $("#tab-indicator").css("left", index * widthPercent + "%");
 
-    function updateClock() {
-      const now = new Date();
-      const time = now.toLocaleTimeString(); // e.g. "9:35:22 AM"
-      document.getElementById("clock").textContent = time;
-    }
+    $(".tab-btn").removeClass("active text-[rgb(234,139,97)]");
+    $(this).addClass("active text-[rgb(234,139,97)]");
 
-    setInterval(updateClock, 1000);
-    updateClock();
+    $(".tab-content").addClass("hidden");
+    $("#" + $(this).data("tab")).removeClass("hidden");
+  });
+
+  // Load more
+  $('#loadMore').on('click', function () {
+    $('.hiddenImage').removeClass('hidden');
+    $('#loadMore').addClass('hidden');
+  });
+
+  // Clock
+  function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString();
+    document.getElementById("clock").textContent = time;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Lenis smooth scroll
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+    smoothTouch: false,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 });

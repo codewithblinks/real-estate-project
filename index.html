@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <!-- ScrollSmoother requires ScrollTrigger -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis/dist/lenis.min.js"></script>
 </head>
 
 <body class="font-display antialiased">
     <div id="smooth-wrapper">
         <div id="smooth-content">
             <!-- header -->
-            <div class="w-full h-auto max-w-[526px] md:max-w-[950px] lg:max-w-[1202px] mx-auto">
-                <header class="w-full md:pt-[40px] pt-8 pr-4 pl-4 md:pr-10 md:pl-10 lg:pr-16 pb-0 lg:pl-16">
-                    <nav class="flex items-center-safe justify-between text-white relative">
+            <div class="w-full h-auto relative">
+                <header
+                    class="flex flex-row flex-nowrap items-end justify-center w-full relative md:pt-[40px] pt-8 pr-4 pl-4 md:pr-10 md:pl-10 lg:pr-16 pb-0 lg:pl-16">
+                    <nav
+                        class="flex items-center-safe justify-between text-white relative max-w-[476px] md:max-w-[1072px] w-full">
                         <!-- Search Trigger -->
                         <div id="searchTrigger">
                             <div
@@ -32,7 +31,8 @@
                                     </svg>
                                 </div>
                                 <div class="hidden md:block">
-                                    <p class="font-thin tracking-wide text-[rgb(255,255,255)]">Search for a listing</p>
+                                    <p class="font-thin tracking-wide text-[rgb(255,255,255)] text-sm">Search for a
+                                        listing</p>
                                 </div>
                             </div>
                         </div>
@@ -141,13 +141,15 @@
             <section
                 class="animate-slide-up flex items-center justify-center-safe w-full relative pt-[72px] px-[16px] pb-[80px] md:pt-[100px] md:px-[40px] lg:px-[64px] md:pb-[80px]">
                 <div
-                    class="flex flex-col gap-[80px] md:gap-[120px] container max-w-[476px] md:max-w-[820px] lg:max-w-[1072px] text-4xl md:text-5xl lg:text-6xl font-light leading-[70px] shrink-0 overflow-hidden">
-                    <header class="flex flex-col gap-[12px] md:gap-[32px] w-full relative">
-                        <div class="flex flex-col flex-nowrap gap-[10px] w-full">
+                    class="flex flex-col gap-[80px] md:gap-[120px] container max-w-[476px] md:max-w-[950px] lg:max-w-[1072px]  shrink-0 overflow-hidden">
+                    <header class="flex flex-nowrap justify-center items-center flex-col gap-[32px] w-full relative">
+                        <div
+                            class="flex flex-col flex-nowrap gap-[10px] w-full relative overflow-hidden justify-center text-4xl md:text-5xl lg:text-6xl font-light leading-[70px]">
                             <div
-                                class="flex items-end-safe lg:justify-center text-nowrap gap-[16px] tracking-[-0.03em] leading-[1.3em]">
+                                class="flex items-end-safe gap-[16px] tracking-[-0.03em] leading-[1.3em] flex-wrap overflow-hidden relative lg:pl-5">
                                 <div>
-                                    <h1 class=" text-white"><span class="text-[rgb(144,_144,_144)]">Hi,</span> I’m David
+                                    <h1 class="text-white"><span class="text-[rgb(144,_144,_144)]">Hi,</span> I’m
+                                        David
                                     </h1>
                                 </div>
                                 <div
@@ -166,40 +168,42 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <div class="md:tracking-[-0.03em] leading-[1.3em] lg:pl-5">
-                                    <!-- large screen -->
-                                    <div class="hidden lg:block">
-                                        <h1 class="text-white">14 years of experience<span
-                                                class="text-[rgb(144,_144,_144)]">working with</span> top agencies</h1>
-                                    </div>
-                                    <!-- medieum screen -->
-                                    <div class="hidden md:block lg:hidden">
-                                        <h1 class="text-white"> <span class="text-[rgb(144,_144,_144)]">agent with
-                                            </span>14
-                                            years of experience<span class="text-[rgb(144,_144,_144)]"> working
-                                                with</span> top
-                                            agencies</h1>
-                                    </div>
-                                    <!-- small screen -->
-                                    <div class="md:hidden tracking-[-0.01em] relative text-balance">
-                                        <h1 class="text-[rgb(144,_144,_144)] ">a real estate agent with <span
-                                                class="text-[rgb(255,255,255)]">14 years of experience </span> working
-                                            with
-                                            <span class="text-[rgb(255,255,255)]">top agencies</span>
-                                        </h1>
-                                    </div>
+                            <!-- $ -->
+                            <div
+                                class="flex items-center flex-row flex-nowrap flex-1 w-full justify-center overflow-hidden relative lg:pl-5">
+                                <!-- large screen -->
+                                <div class="hidden lg:block break-words">
+                                    <h1 class="text-white leading-[1.3em] tracking-[-.03em]">14 years of experience
+                                        <span class="text-[rgb(144,_144,_144)]">working with</span> top agencies
+                                    </h1>
                                 </div>
-
-                                <div
-                                    class="absolute bottom-[82px] left-[285px] md:bottom-[68px] md:left-[540px] lg:bottom-[70px] lg:left-[260px] size-[32px] md:size-[44px] lg:size-[54px] overflow-hidden">
-                                    <img src="images/home/star.svg" class="w-full h-full object-cover object-center"
-                                        alt="star">
+                                <!-- medieum screen -->
+                                <div class="hidden md:block lg:hidden break-words text-balance">
+                                    <h1 class="text-white leading-[1.3em] tracking-[-.02em]">
+                                        <span class="text-[rgb(144,_144,_144)]">agent with</span> 14 years of experience
+                                        <span class="text-[rgb(144,_144,_144)]"> working with</span> top agencies
+                                    </h1>
+                                </div>
+                                <!-- small screen -->
+                                <div class="md:hidden break-words text-balance">
+                                    <h1 class="text-white leading-[1.3em] tracking-[-.01em]">
+                                        <span class="text-[rgb(144,_144,_144)]">a real estate agent with</span> 14 years
+                                        of experience
+                                        <span class="text-[rgb(144,_144,_144)]"> working with</span> top agencies
+                                    </h1>
+                                </div>
+                            </div>
+                            <!-- star icon -->
+                            <div
+                                class="absolute overflow-hidden aspect-square w-[32px] md:w-[54px] bottom-[5px] left-auto right-[20px]">
+                                <div class="absolute inset-0">
+                                    <img src="images/home/star.svg"
+                                        class="block w-full h-full object-contain object-center" alt="star">
                                 </div>
                             </div>
                         </div>
-
-                        <div class="flex flex-wrap overflow-hidden lg:pl-5 md:gap-10 gap-4">
+                        <!--  -->
+                        <div class="flex flex-wrap overflow-hidden lg:pl-5 md:gap-10 gap-6">
                             <div class="flex items-center-safe gap-1.5">
                                 <div class="size-[25px]">
                                     <img src="images/home/top.svg" alt="">
@@ -244,7 +248,7 @@
                         <div class="flex items-center-safe justify-center-safe gap-[10px] w-full">
                             <div>
                                 <p
-                                    class="uppercase text-[rgb(234,139,97)] text-lg font-light leading-[22px] tracking-[.1em] antialiased">
+                                    class="uppercase text-[rgb(234,139,97)] text-base md:text-lg font-light leading-[22px] tracking-[.1em] antialiased">
                                     listings</p>
                             </div>
                             <div class="bg-[rgb(64,64,64)] flex-1 h-[1px] overflow-hidden relative">
@@ -611,7 +615,7 @@
                         <div class="flex items-center-safe justify-center-safe gap-[10px] w-full">
                             <div>
                                 <p
-                                    class="uppercase ext-[rgb(234,139,97)] text-lg font-light leading-[22px] tracking-[.1em] antialiased">
+                                    class="uppercase text-[rgb(234,139,97)] text-base md:text-lg font-light leading-[22px] tracking-[.1em] antialiased">
                                     TESTIMONIALS
                                 </p>
                             </div>
